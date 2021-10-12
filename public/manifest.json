@@ -1,6 +1,7 @@
 {
   "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "chrome crx demo",
+  "version": "1.0.0",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,60 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  // manifest_version.json的文件版本, 必须为2
+  "manifest_version": 2,
+  // popup页面设置
+  "page_action": {
+    // 浏览器插件按钮的图标
+    "default_icon": "images/icon.png",
+    // 浏览器插件按钮hover显示的文字
+    "default_title": "React crx",
+    // popup页面的路径（根目录的为最终build生成的插件包目录）
+    "default_popup": "index.html"
+  },
+  // background script配置
+  "background": {
+    // background script路径（根目录的为最终build生成的插件包目录）
+    "scripts": [
+      "static/js/background.js"
+    ],
+    // 官方强烈建议这边为false
+    "persistent": false
+  },
+
+  // content script配置
+  "content_script": [
+    {
+      // 应用于哪些页面地址（可以使用正则，<all_urls>表示匹配所有地址）
+      "matches": [
+        "<all_urls>"
+      ],
+      // 注入的css, 会污染全局样式
+      "css": [
+        "static/css/content.css"
+      ],
+      // 注入的js
+      "js": [
+        "static/js/content.js"
+      ],
+      // 代码注入的时间，可选document_start、document_end、document_idle(默认)
+      "run_at": "document_end"
+    }
+  ],
+
+  // 权限申请（需要background发起跨域请求的url也放在这里）
+  "permissions": [
+    // 标签
+    "tabs",
+    // 根据定制的网页规则，采取相应的措施（例如只在baidu.com启动组件）
+    "declarativeContent",
+    // 插件本地存储
+    "storge",
+    // 通知
+    "notifications"
+  ],
+  // 如果向目标插入js，需要在这里声明下才能获得执行的权限
+  "web_accessible_resources": [
+    "insert.js"
+  ]
 }
