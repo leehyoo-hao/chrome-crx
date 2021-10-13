@@ -48,9 +48,9 @@
         "<all_urls>"
       ],
       // 注入的css, 会污染全局样式
-      "css": [
-        "static/css/content.css"
-      ],
+      // "css": [
+      //   "static/css/content.css"
+      // ],
       // 注入的js
       "js": [
         "static/js/content.js"
