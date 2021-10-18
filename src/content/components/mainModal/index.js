@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Input, Modal, Select} from 'antd'
+import { Button, Input, Modal, Select } from 'antd'
 import './mainModal.styl'
-import { apiReqs } from '@/api'
 
+import { apiReqs } from '@/api'
 
 const { Option } = Select
 
-const mainModal: React.FC = (props) => {
-
+function MainModal(props) {
     const [text, setText] = useState(null)
     const [option, setOption] = useState('react')
 

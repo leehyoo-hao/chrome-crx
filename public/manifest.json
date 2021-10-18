@@ -29,7 +29,7 @@
   },
 
   // content script配置
-  "content_script": [
+  "content_scripts": [
     {
       // 应用于哪些页面地址（可以使用正则，<all_urls>表示匹配所有地址）
       "matches": [
@@ -57,7 +57,8 @@
     // 插件本地存储
     "storge",
     // 通知
-    "notifications"
+    "notifications",
+    "https://*/*"
   ],
   // 如果向目标插入js，需要在这里声明下才能获得执行的权限
   "web_accessible_resources": [
